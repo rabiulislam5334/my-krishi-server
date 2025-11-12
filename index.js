@@ -5,12 +5,13 @@ const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 require("dotenv").config();
 
 const app = express(); //
-const port = process.env.PORT || 3000;
+// const port = process.env.PORT || 3000;
 
 // --- Middleware ---
 app.use(
   cors({
-    origin: "*", // সব origin কে allow করো (test করার জন্য)
+    origin: true,
+    credentials: false,
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
@@ -294,6 +295,7 @@ async function run() {
 run().catch(console.dir);
 
 // --- Listen ---
-app.listen(port, () => {
-  console.log(` KrishiLink server is running on port ${port}`);
-});
+// app.listen(port, () => {
+//   console.log(` KrishiLink server is running on port ${port}`);
+// });
+module.exports = app;
